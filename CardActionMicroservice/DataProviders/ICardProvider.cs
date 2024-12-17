@@ -1,6 +1,6 @@
 ﻿using CardActionMicroservice.Models;
 
-namespace CardActionMicroservice.DataProvider
+namespace CardActionMicroservice.DataProviders
 {
     public interface ICardProvider
     {

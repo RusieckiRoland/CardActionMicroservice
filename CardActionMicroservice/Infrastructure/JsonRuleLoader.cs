@@ -1,30 +1,22 @@
-﻿using CardActionMicroservice.Business.Services;
-using CardActionMicroservice.Business.Strategies;
-using CardActionMicroservice.DataProvider;
-using CardActionMicroservice.Models.Enums;
+﻿using CardActionMicroservice.Models.Enums;
 using System.Text.Json;
 
-namespace CardActionService.Extensions
+namespace CardActionMicroservice.Infrastructure
 {
-    public static class ServiceCollectionExtensions
+        public class JsonRuleLoader : IRuleLoader
     {
-        public static IServiceCollection AddBusinessServices(this IServiceCollection services, string jsonConfigPath)
+        private readonly string _jsonContent;
+
+        public JsonRuleLoader(string jsonContent)
         {
-            var (cardTypeRules, cardStatusRules, pinRules) = LoadRulesFromConfig(jsonConfigPath);
-
-            services.AddSingleton<IActionStrategy>(new CardTypeStrategy(cardTypeRules));
-            services.AddSingleton<IActionStrategy>(new CardStatusStrategy(cardStatusRules));
-            services.AddSingleton<IActionStrategy>(new PinStrategy(pinRules));
-            services.AddSingleton<AllowedActionsService>();
-            services.AddSingleton<ICardProvider, InMemoryCardProvider>();
-
-            return services;
+            _jsonContent = jsonContent;
         }
 
-        private static (Dictionary<CardType, List<string>>, Dictionary<CardStatus, List<string>>, Dictionary<(bool, CardStatus), List<string>>)
-       LoadRulesFromConfig(string filePath)
+        public (Dictionary<CardType, List<string>>, Dictionary<CardStatus, List<string>>, Dictionary<(bool, CardStatus), List<string>>)
+        LoadRules()
         {
-            var jsonConfig = JsonSerializer.Deserialize<JsonElement>(File.ReadAllText(filePath));
+            // Deserializacja JSON-a
+            var jsonConfig = JsonSerializer.Deserialize<JsonElement>(_jsonContent);
 
             var cardTypeRules = jsonConfig.GetProperty("CardTypeRules")
                 .Deserialize<Dictionary<CardType, List<string>>>() ?? new Dictionary<CardType, List<string>>();
@@ -50,7 +42,7 @@ namespace CardActionService.Extensions
 
             return (cardTypeRules, cardStatusRules, pinConvertedRules);
         }
-
     }
 
 
+}

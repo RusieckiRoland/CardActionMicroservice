@@ -1,7 +1,7 @@
 ﻿using CardActionMicroservice.Models.Enums;
 using CardActionMicroservice.Models;
 
-namespace CardActionMicroservice.DataProvider
+namespace CardActionMicroservice.DataProviders
 {
     public class InMemoryCardProvider : ICardProvider
     {
