@@ -23,29 +23,36 @@ namespace CardActionMicroservice.DataProviders
                 return cardDetails;
             }
 
-            return null; // Jeśli karta nie zostanie znaleziona
+            return null; 
         }
 
         private static Dictionary<string, Dictionary<string, CardDetails>> CreateSampleUserCards()
         {
-            return new Dictionary<string, Dictionary<string, CardDetails>>
-        {
+            var userCards = new Dictionary<string, Dictionary<string, CardDetails>>();
+            for (var i = 1; i <= 3; i++)
             {
-                "User1", new Dictionary<string, CardDetails>
+                var cards = new Dictionary<string, CardDetails>();
+                var cardIndex = 1;
+                foreach (CardType cardType in Enum.GetValues(typeof(CardType)))
                 {
-                    { "Card123", new CardDetails("Card123", CardType.Prepaid, CardStatus.Active, true) },
-                    { "Card124", new CardDetails("Card124", CardType.Debit, CardStatus.Ordered, false) }
+                    foreach (CardStatus cardStatus in Enum.GetValues(typeof(CardStatus)))
+                    {
+                        var cardNumber = $"Card{i}{cardIndex}";
+                        cards.Add(cardNumber,
+                        new CardDetails(
+                        CardNumber: cardNumber,
+                        CardType: cardType,
+                        CardStatus: cardStatus,
+                        IsPinSet: cardIndex % 2 == 0));
+                        cardIndex++;
+                    }
                 }
-            },
-            {
-                "User2", new Dictionary<string, CardDetails>
-                {
-                    { "Card125", new CardDetails("Card125", CardType.Credit, CardStatus.Blocked, true) },
-                    { "Card126", new CardDetails("Card126", CardType.Prepaid, CardStatus.Closed, false) }
-                }
+                var userId = $"User{i}";
+                userCards.Add(userId, cards);
             }
-        };
+            return userCards;
         }
+
     }
 
 }

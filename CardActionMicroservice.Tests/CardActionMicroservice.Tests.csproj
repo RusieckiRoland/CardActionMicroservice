@@ -27,8 +27,4 @@
     <ProjectReference Include="..\CardActionMicroservice\CardActionMicroservice.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Extesnions\" />
-  </ItemGroup>
-
 </Project>

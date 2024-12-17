@@ -6,7 +6,7 @@ using FluentAssertions;
 using System.Text.Json;
 using CardActionMicroservice.Infrastructure;
 using CardActionMicroservice.Business.Strategies;
-using System.Runtime.CompilerServices;
+
 
 namespace CardActionMicroservice.Tests.Business.Services
 {
