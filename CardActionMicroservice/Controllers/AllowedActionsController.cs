@@ -1,14 +1,44 @@
 ﻿using CardActionMicroservice.Business.Services;
 using CardActionMicroservice.DataProviders;
 using CardActionMicroservice.Models;
-using CardActionMicroservice.Validators;
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
 
 namespace CardActionMicroservice.Controllers
 {
     using FluentValidation;
     using Microsoft.AspNetCore.Mvc;
+
+    // <summary>
+    /// Retrieves a list of allowed actions for a given card based on its details.
+    /// </summary>
+    /// <param name="request">
+    /// The request object containing the user ID and card number.
+    /// Both parameters are required for retrieving card details.
+    /// </param>
+    /// <returns>
+    /// Returns an HTTP 200 OK response with the list of allowed actions if the request is valid.
+    /// Returns HTTP 400 BadRequest if the input validation fails or the card details are invalid.
+    /// Returns HTTP 404 NotFound if the specified card is not found for the user.
+    /// </returns>
+    /// <remarks>
+    /// - This endpoint uses the POST method, as per the decision made in ADR-1, 
+    ///   to ensure that sensitive card details are not exposed in URLs or logs.
+    /// - POST was chosen over GET to prioritize data security.
+    /// 
+    /// Sample Request:
+    /// POST /api/AllowedActions
+    /// {
+    ///     "UserId": "User1",
+    ///     "CardNumber": "Card11"
+    /// }
+    /// 
+    /// Sample Response:
+    /// HTTP 200 OK
+    /// {
+    ///     "UserId": "User1",
+    ///     "CardNumber": "Card11",
+    ///     "AllowedActions": [ "ACTION1", "ACTION2", "ACTION3" ]
+    /// }
+    /// </remarks>
 
     [ApiController]
     [Route("api/[controller]")]
