@@ -1,0 +1,40 @@
+﻿@startuml
+package "API" {
+    component AllowedActionsController
+}
+
+package "Services" {
+    component AllowedActionsService
+    interface IActionStrategy
+    component CardTypeStrategy
+    component CardStatusStrategy
+    component PinStrategy
+}
+
+package "Providers" {
+    interface ICardProvider
+    component InMemoryCardProvider
+}
+
+package "Validators" {
+    component CardRequestValidator
+    component CardDetailsValidator
+}
+
+package "Infrastructure" {
+    interface IRuleLoader
+    component JsonRuleLoader
+}
+
+AllowedActionsController --> AllowedActionsService
+AllowedActionsService --> IActionStrategy
+IActionStrategy <|-- CardTypeStrategy
+IActionStrategy <|-- CardStatusStrategy
+IActionStrategy <|-- PinStrategy
+AllowedActionsController --> ICardProvider
+ICardProvider <|-- InMemoryCardProvider
+AllowedActionsController --> CardRequestValidator
+AllowedActionsController --> CardDetailsValidator
+AllowedActionsController --> IRuleLoader
+IRuleLoader <|-- JsonRuleLoader
+@enduml

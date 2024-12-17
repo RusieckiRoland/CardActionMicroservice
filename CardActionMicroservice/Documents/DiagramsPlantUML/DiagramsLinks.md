@@ -1,0 +1,17 @@
+﻿## Diagrams
+
+### Activity Diagram
+
+Click the link below to view the **Activity Diagram**:  
+[Activity Diagram][activity-diagram]
+
+### Component Diagram
+
+Click the link below to view the **Component Diagram**:  
+[Component Diagram][component-diagram]
+
+---
+
+[activity-diagram]: https://planttext.com/plantuml/png/Z99DJiCm48NtESLRfXiKeQx2WfQY8eJKLYb2Ocd54yMIQuCzIG_7WYDn1MGd9J9XmSOQpSzxtupyzV6vyYmSToUTnI0hAwf9zOJ3_lWCH-yTURx9oXUXbHHCs0WdgqjQDSZ7Yh86ZL3Qtox0BHdah-GN6G2K5N7d39P5WJinJOUQP_kMaVQ4V6V7zYrntKQZU-8WYSRP4nv3vk1ihoIvOJhuXooCPJIsCtBkdX8iiREy3Ps3mWz325AEE9ZiFU9Ca-fV-yyfvdUOiVpD4sKsGckijRPdakiwEFiZkLxLTFL0d1PIzGl1TL5W_uIpulQNqDHFHgfcE4kCXZVohSZ8y6M-0G00__y30000
+
+[component-diagram]: https://planttext.com/plantuml/png/X9D1JiCm44NtFeNLVMw0KAEo2G8fQX1xovbM5ewTZiT54VHaB3WILq1je74S9ztPdZTVFthApzVtsf50yerchP1lOWzybPV5YdympZcNjccj0KCyrzg-GvrBKjQuZJM4Lcj0TcB3PWLuL1BShVK_xi8eGu0x8O4N_RGY50JxBahO2AnVkXOMnXK9ycu6ADMG77OkqHvL3NWj7HGwX_xFexZ2F4DZiHiXOUwhqAeMP8VWSTaj73mukc89v058AEq69Cmlp0w58_IIF4AY_DPhUB9YMltHMHCCJupDoULPTZ-ZBlbwuMEDqPtVVMRPrEOi5KbDSg7RnMyfHhf6jpufgNKnCkdoviP4xNBjG5TmxYj7EjTWwlFl_0i00F__0m00

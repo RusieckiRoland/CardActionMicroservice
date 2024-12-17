@@ -1,0 +1,25 @@
+﻿@startuml
+start
+:Receive POST request;
+:Validate CardRequest;
+if (Validation fails?) then (Yes)
+    :Return 400 BadRequest;
+    stop
+else (No)
+    :Fetch CardDetails from ICardProvider;
+    if (Card not found?) then (Yes)
+        :Return 404 NotFound;
+        stop
+    else (No)
+        :Validate CardDetails;
+        if (Validation fails?) then (Yes)
+            :Return 400 BadRequest;
+            stop
+        else (No)
+            :Call AllowedActionsService.GetAllowedActions;
+            :Return 200 OK with AllowedActions;
+        endif
+    endif
+endif
+stop
+@enduml
