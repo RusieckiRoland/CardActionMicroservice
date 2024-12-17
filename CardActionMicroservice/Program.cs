@@ -4,6 +4,7 @@ using CardActionMicroservice.Validators;
 using CardActionService.Extensions;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using System.Diagnostics;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,10 @@ builder.Services.AddValidatorsFromAssemblyContaining<CardDetailsValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 var configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Config", "ActionsConfiguration.json");
 var jsonContent = File.ReadAllText(configFilePath, Encoding.UTF8);
-builder.Services.AddSingleton<IRuleLoader>(_ => new JsonRuleLoader(jsonContent));
+builder.Services.AddSingleton<IRuleLoader>(_=>{
+    Debug.WriteLine("Registering JsonRuleLoader...");
+    return new JsonRuleLoader(jsonContent);
+});
 
 //Automatic request validation - through binding
 builder.Services.AddValidatorsFromAssemblyContaining<CardRequestValidator>();

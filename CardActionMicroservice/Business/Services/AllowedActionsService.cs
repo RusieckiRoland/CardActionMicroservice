@@ -1,4 +1,5 @@
 ﻿using CardActionMicroservice.Business.Strategies;
+using CardActionMicroservice.Infrastructure;
 using CardActionMicroservice.Models;
 
 namespace CardActionMicroservice.Business.Services
@@ -7,9 +8,9 @@ namespace CardActionMicroservice.Business.Services
     {
         private readonly IEnumerable<IActionStrategy> _strategies;
 
-        public AllowedActionsService(IEnumerable<IActionStrategy> strategies)
+        public AllowedActionsService(IRuleLoader ruleLoader)
         {
-            _strategies = strategies;
+            _strategies = BusinessStrategiesFactory.CreateStrategies(ruleLoader);
         }
 
         /// <summary>

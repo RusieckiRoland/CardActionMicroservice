@@ -27,4 +27,14 @@
     <ProjectReference Include="..\CardActionMicroservice\CardActionMicroservice.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Config\ActionsConfiguration_ver1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -13,8 +13,9 @@ namespace CardActionService.Extensions
             services.AddSingleton(provider =>
             {
                 var ruleLoader = provider.GetRequiredService<IRuleLoader>();              
+                var strategies = BusinessStrategiesFactory.CreateStrategies(ruleLoader);
 
-                return BusinessStrategiesFactory.CreateStrategies(ruleLoader);
+                return strategies;
             });
             
             services.AddSingleton<AllowedActionsService>();

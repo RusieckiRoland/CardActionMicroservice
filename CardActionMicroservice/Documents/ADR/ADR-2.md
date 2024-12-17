@@ -26,7 +26,7 @@ The **Strategy Pattern** has been selected as the design approach for implementi
      - Dynamic changes to configuration during deployment or runtime.  
 
 3. **Embedded JSON Configuration for Unit Tests**  
-   - For unit tests, a hardcoded JSON configuration is embedded directly in the test code.  
+   - For unit tests, a copy of JSON configuration with additional verison nb. 
    - This ensures that unit tests remain **deterministic** and independent of external file changes.  
    - New test cases can be easily added to validate extended or modified configurations.
 
@@ -72,4 +72,4 @@ The **Strategy Pattern** has been adopted for its extensibility, and the configu
 - **Date**: 2024-06-17  
 - **Status**: Accepted  
 - **Author**: Roland R  
-- **Version**: 1.0  
+- **Version**: 1.1  
