@@ -12,6 +12,13 @@ namespace CardActionMicroservice.Business.Services
             _strategies = strategies;
         }
 
+        /// <summary>
+        /// Determines the list of allowed actions for a card by applying a set of strategies.
+        /// </summary>
+        /// <param name="cardDetails">Details of the card including status, type, and pin state.</param>
+        /// <returns>A list of allowed actions after filtering out blocked actions.</returns>
+
+
         public IEnumerable<string> GetAllowedActions(CardDetails cardDetails)
         {
             var blockedActions = _strategies

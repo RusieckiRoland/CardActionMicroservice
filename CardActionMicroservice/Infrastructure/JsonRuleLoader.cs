@@ -12,10 +12,21 @@ namespace CardActionMicroservice.Infrastructure
             _jsonContent = jsonContent;
         }
 
+        /// <summary>
+        /// Loads rules for card type, status, and pin from JSON content.
+        /// </summary>
+        /// <returns>
+        /// Tuple containing:  
+        /// - Card type rules.  
+        /// - Card status rules.  
+        /// - Pin rules (converted to a structured format).
+        /// </returns>
+
+
         public (Dictionary<CardType, List<string>>, Dictionary<CardStatus, List<string>>, Dictionary<(bool, CardStatus), List<string>>)
         LoadRules()
         {
-            // Deserializacja JSON-a
+        
             var jsonConfig = JsonSerializer.Deserialize<JsonElement>(_jsonContent);
 
             var cardTypeRules = jsonConfig.GetProperty("CardTypeRules")
