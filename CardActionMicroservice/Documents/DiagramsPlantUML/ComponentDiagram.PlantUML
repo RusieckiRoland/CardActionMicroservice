@@ -26,6 +26,12 @@ package "Infrastructure" {
     component JsonRuleLoader
 }
 
+note right of AllowedActionsController
+    Main Controller:
+    Handles requests for allowed actions.
+    Key method: GetAllowedActions()
+end note
+
 AllowedActionsController --> AllowedActionsService
 AllowedActionsService --> IActionStrategy
 IActionStrategy <|-- CardTypeStrategy
