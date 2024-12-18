@@ -57,12 +57,12 @@ namespace CardActionMicroservice.Tests.Business.Services
             try
             {
                 allowedActions.Should().BeEquivalentTo(expectedActions);
-                LogToFile($"[PASS] CardDetails: {cardDetails}, AllowedActions: {string.Join(", ", allowedActions)}");
+                //  LogToFile($"[PASS] CardDetails: {cardDetails}, AllowedActions: {string.Join(", ", allowedActions)}");
             }
             catch (Exception)
             {
-                LogToFile($"[FAIL] CardDetails: {cardDetails}, Expected: {string.Join(", ", expectedActions)}, Actual: {string.Join(", ", allowedActions)}");
-                throw; 
+                //   LogToFile($"[FAIL] CardDetails: {cardDetails}, Expected: {string.Join(", ", expectedActions)}, Actual: {string.Join(", ", allowedActions)}");
+                throw;
             }
         }
 
@@ -171,10 +171,16 @@ namespace CardActionMicroservice.Tests.Business.Services
             return jsonContent;
 
         }
-
+        /// <summary>
+        /// Logs a message to the "TestResults.log" file.
+        /// This method is used to record the outcomes of test cases or debug information.
+        /// The calls to this method are currently commented out but left in place 
+        /// in case test execution or debugging requires detailed logging in the future.
+        /// </summary>
+        /// <param name="message">The message to log. Typically includes test case details or outcomes.</param>
         public static void LogToFile(string message)
         {
-            var logFilePath = "TestResults.log"; 
+            var logFilePath = "TestResults.log";
             File.AppendAllText(logFilePath, $"{DateTime.Now}: {message}{Environment.NewLine}");
         }
     }
