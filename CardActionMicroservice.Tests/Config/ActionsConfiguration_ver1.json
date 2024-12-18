@@ -16,7 +16,7 @@
   ],
   "CardTypeRules": {
     "Prepaid": [ "ACTION5" ],
-    "Debit": [ "ACTION6" ],
+    "Debit": [ "ACTION5" ],
     "Credit": []
   },
   "CardStatusRules": {
