@@ -29,9 +29,7 @@ namespace CardActionMicroservice.Tests.Business.Services
 
 
             // Assert
-            var allActions = JsonSerializer.Deserialize<JsonElement>(jsonContent)
-                                   .GetProperty("AllActions")
-                                   .Deserialize<List<string>>();
+            var allActions = ruleLoader.LoadAllAvailableActions();
             //Na podstawie tabeli
             var blockedActions = new List<string> { "ACTION1", "ACTION2", "ACTION5", "ACTION6", "ACTION11" };
 

@@ -7,10 +7,13 @@ namespace CardActionMicroservice.Business.Services
     public class AllowedActionsService
     {
         private readonly IEnumerable<IActionStrategy> _strategies;
+        private readonly HashSet<string> _allowedActions;
 
         public AllowedActionsService(IRuleLoader ruleLoader)
         {
             _strategies = BusinessStrategiesFactory.CreateStrategies(ruleLoader);
+            _allowedActions = ruleLoader.LoadAllAvailableActions();
+
         }
 
         /// <summary>
@@ -27,8 +30,8 @@ namespace CardActionMicroservice.Business.Services
                 .SelectMany(strategy => strategy.GetBlockedActions(cardDetails))
                 .Distinct();
 
-            var allActions = Enumerable.Range(1, 13).Select(i => $"ACTION{i}");
-            return allActions.Except(blockedActions);
+           
+            return _allowedActions.Except(blockedActions);
         }
     }
 }
