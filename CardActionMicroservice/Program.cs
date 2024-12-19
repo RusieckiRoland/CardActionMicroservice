@@ -12,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-builder.Services.AddValidatorsFromAssemblyContaining<CardDetailsValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 var configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Config", "ActionsConfiguration.json");
 var jsonContent = File.ReadAllText(configFilePath, Encoding.UTF8);

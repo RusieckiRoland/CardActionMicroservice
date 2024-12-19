@@ -47,4 +47,9 @@ The HTTP **POST** method has been chosen for retrieving user card data instead o
    - Data is not exposed in logs, browser history, or referer headers.  
 
 - **Disadvantages**:  
-   - POST is
+   -POST is not idempotent, which means caching and retry mechanisms require additional considerations. For instance, the server must ensure that repeated submissions of the same request do not result in unintended side effects or data inconsistencies. This adds complexity but can be mitigated through careful implementation.
+
+- **Date**: 2024-06-19  
+- **Status**: Accepted  
+- **Author**: Roland R  
+- **Version**: 1.1  

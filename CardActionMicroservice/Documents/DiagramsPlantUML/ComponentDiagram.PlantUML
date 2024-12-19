@@ -11,6 +11,11 @@ package "Services" {
     component PinStrategy
 }
 
+package "Infrastructure" {
+    interface IRuleLoader
+    component JsonRuleLoader
+}
+
 package "Providers" {
     interface ICardProvider
     component InMemoryCardProvider
@@ -21,10 +26,7 @@ package "Validators" {
     component CardDetailsValidator
 }
 
-package "Infrastructure" {
-    interface IRuleLoader
-    component JsonRuleLoader
-}
+
 
 note right of AllowedActionsController
     Main Controller:
@@ -41,6 +43,6 @@ AllowedActionsController --> ICardProvider
 ICardProvider <|-- InMemoryCardProvider
 AllowedActionsController --> CardRequestValidator
 AllowedActionsController --> CardDetailsValidator
-AllowedActionsController --> IRuleLoader
+AllowedActionsService --> IRuleLoader
 IRuleLoader <|-- JsonRuleLoader
 @enduml
